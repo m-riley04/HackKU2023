@@ -81,13 +81,13 @@ class App:
             if day == str(self.get_date()):
                 
                 # Load day emotions
+                emotions = []
                 for i in self._days[day]["emotions"]:
-                    emotions = []
                     emotions.append(Emotion(i["name"], i["severity"]))
                     
                 # Load day entries
+                entries = []
                 for i in self._days[day]["entries"]:
-                    entries = []
                     entries.append(LogEntry(i["content"], i["time"]))
                 
                 # Load day

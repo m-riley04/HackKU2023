@@ -1,9 +1,9 @@
 {
     "days": {
-        "2023-04-15": {
+        "2023-04-11": {
             "date": "2023-04-15",
             "time": "10:58:17",
-            "rating": 7,
+            "rating": 4,
             "emotions": [
                 {
                     "name": "happy",
@@ -18,6 +18,118 @@
                 {
                     "content": "Eh, not much. Just overall pretty decent",
                     "time": "10:58:17"
+                }
+            ],
+            "imagePath": "",
+            "submitted": true
+        },
+        "2023-04-12": {
+            "date": "2023-04-15",
+            "time": "10:58:17",
+            "rating": 2,
+            "emotions": [
+                {
+                    "name": "happy",
+                    "severity": 1
+                },
+                {
+                    "name": "optimistic",
+                    "severity": 1
+                }
+            ],
+            "entries": [
+                {
+                    "content": "Eh, not much. Just overall pretty decent",
+                    "time": "10:58:17"
+                }
+            ],
+            "imagePath": "",
+            "submitted": true
+        },
+        "2023-04-13": {
+            "date": "2023-04-15",
+            "time": "10:58:17",
+            "rating": 5,
+            "emotions": [
+                {
+                    "name": "happy",
+                    "severity": 1
+                },
+                {
+                    "name": "optimistic",
+                    "severity": 1
+                }
+            ],
+            "entries": [
+                {
+                    "content": "Eh, not much. Just overall pretty decent",
+                    "time": "10:58:17"
+                }
+            ],
+            "imagePath": "",
+            "submitted": true
+        },
+        "2023-04-14": {
+            "date": "2023-04-15",
+            "time": "10:58:17",
+            "rating": 6,
+            "emotions": [
+                {
+                    "name": "happy",
+                    "severity": 1
+                },
+                {
+                    "name": "optimistic",
+                    "severity": 1
+                }
+            ],
+            "entries": [
+                {
+                    "content": "Eh, not much. Just overall pretty decent",
+                    "time": "10:58:17"
+                }
+            ],
+            "imagePath": "",
+            "submitted": true
+        },
+        "2023-04-15": {
+            "date": "2023-04-15",
+            "time": "10:58:17",
+            "rating": 9,
+            "emotions": [
+                {
+                    "name": "meh",
+                    "severity": 5
+                },
+                {
+                    "name": "content",
+                    "severity": 1
+                },
+                {
+                    "name": "optimistic",
+                    "severity": 2
+                },
+                {
+                    "name": "hyped",
+                    "severity": 6
+                },
+                {
+                    "name": "hyped",
+                    "severity": 1
+                }
+            ],
+            "entries": [
+                {
+                    "content": "testentry",
+                    "time": "02:19:01 PM"
+                },
+                {
+                    "content": "test21dasd12asfqw",
+                    "time": "02:21:29 PM"
+                },
+                {
+                    "content": "This is the last test entry for a bit. I found an error where I was resetting the length of the list to zero for every loop.\n",
+                    "time": "02:24:18 PM"
                 }
             ],
             "imagePath": "",

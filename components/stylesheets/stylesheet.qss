@@ -1,0 +1,53 @@
+QMainWindow, QStatusBar
+{
+    color: white;
+    background-color : #4b546e;
+}
+
+QPushButton
+{
+    border : 0px;
+}
+
+QLabel
+{
+    color : white;
+}
+
+QLabel#label_logRating, QLabel#label_logRating_1, QLabel#label_logRating_2
+{
+    font-weight : bold;
+}
+
+QFrame#frame_navigation, QMenuBar
+{
+    color: white;
+    background-color : #202430;
+}
+
+QFrame#frame_navigation *
+{
+    color: white;
+    background-color : #202430;
+}
+
+QFrame#frame_navigation .QPushButton:hover
+{
+    background-color : #33394a;
+}
+
+QFrame#submenu_myDay, QFrame#submenu_graphing, QFrame#submenu_settings, QFrame#submenu_help, QFrame#submenu_resources
+{
+    background-color : #252b3b;
+}
+
+QFrame#submenu_myDay *, QFrame#submenu_graphing *, QFrame#submenu_settings *, QFrame#submenu_help *, QFrame#submenu_resources *
+{
+    color: white;
+    background-color : #252b3b;
+}
+
+QFrame#submenu_myDay *:hover, QFrame#submenu_graphing *:hover, QFrame#submenu_settings *:hover, QFrame#submenu_help *:hover, QFrame#submenu_resources *:hover
+{
+    background-color : #2f364a;
+}

@@ -14,22 +14,6 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>0</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: white</string>
-    </property>
-    <property name="text">
-     <string>Trackr</string>
-    </property>
-   </widget>
    <widget class="QStackedWidget" name="pages_stack">
     <property name="enabled">
      <bool>true</bool>
@@ -43,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page_myDay">
      <widget class="QFrame" name="submenu_myDay">
@@ -59,7 +43,7 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(91, 91, 91)</string>
+       <string notr="true"/>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -80,7 +64,7 @@
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: white</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Edit Day</string>
@@ -99,7 +83,7 @@
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: white</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Add Entry</string>
@@ -118,7 +102,7 @@
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: white</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Today's Log</string>
@@ -140,7 +124,7 @@
          <rect>
           <x>30</x>
           <y>260</y>
-          <width>611</width>
+          <width>621</width>
           <height>171</height>
          </rect>
         </property>
@@ -187,7 +171,7 @@
        <widget class="QPushButton" name="btn_submit">
         <property name="geometry">
          <rect>
-          <x>284</x>
+          <x>290</x>
           <y>443</y>
           <width>101</width>
           <height>41</height>
@@ -202,7 +186,7 @@
          <rect>
           <x>30</x>
           <y>70</y>
-          <width>601</width>
+          <width>621</width>
           <height>22</height>
          </rect>
         </property>
@@ -217,6 +201,12 @@
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="tickPosition">
+         <enum>QSlider::NoTicks</enum>
+        </property>
+        <property name="tickInterval">
+         <number>1</number>
         </property>
        </widget>
        <widget class="QLineEdit" name="lineEntry_emotion">
@@ -234,7 +224,7 @@
          <rect>
           <x>300</x>
           <y>120</y>
-          <width>331</width>
+          <width>321</width>
           <height>101</height>
          </rect>
         </property>
@@ -279,6 +269,19 @@
         </property>
         <property name="text">
          <string>Severity:</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_deleteEmotion">
+        <property name="geometry">
+         <rect>
+          <x>630</x>
+          <y>130</y>
+          <width>21</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>-</string>
         </property>
        </widget>
       </widget>
@@ -434,6 +437,19 @@
          <string>Save</string>
         </property>
        </widget>
+       <widget class="QPushButton" name="btn_editDeleteEmotion">
+        <property name="geometry">
+         <rect>
+          <x>640</x>
+          <y>250</y>
+          <width>21</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>-</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="subpage_addEntry">
        <widget class="QTextEdit" name="entry_newEntry">
@@ -562,7 +578,7 @@
          <string>/</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_9">
+       <widget class="QLabel" name="label_logRating_2">
         <property name="geometry">
          <rect>
           <x>340</x>
@@ -576,7 +592,6 @@
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="subpage_todaysLog"/>
      </widget>
     </widget>
     <widget class="QWidget" name="page_help">
@@ -593,7 +608,7 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(91, 91, 91)</string>
+       <string notr="true"/>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -614,7 +629,7 @@
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: white</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Resources</string>
@@ -633,7 +648,7 @@
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: white</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Graphing/Data</string>
@@ -652,7 +667,7 @@
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: white</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>My Day</string>
@@ -674,7 +689,7 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(91, 91, 91)</string>
+       <string notr="true"/>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -695,13 +710,13 @@
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: white</string>
+        <string notr="true"/>
        </property>
        <property name="text">
-        <string>Medication Info</string>
+        <string>Treatment</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="btn_therapy">
+      <widget class="QPushButton" name="btn_facilities">
        <property name="enabled">
         <bool>false</bool>
        </property>
@@ -714,26 +729,7 @@
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: white</string>
-       </property>
-       <property name="text">
-        <string>Therapy</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="btn_facilities">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>120</y>
-         <width>121</width>
-         <height>51</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: white</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Centers/Facilities</string>
@@ -752,7 +748,7 @@
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: white</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>DSM-5</string>
@@ -771,10 +767,29 @@
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: white</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Online Help</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btn_contacts">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>120</y>
+         <width>121</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>Contacts</string>
        </property>
       </widget>
      </widget>
@@ -788,16 +803,6 @@
        </rect>
       </property>
       <widget class="QWidget" name="subpage_dsm5">
-       <widget class="QTextEdit" name="entry_log_2">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>260</y>
-          <width>611</width>
-          <height>171</height>
-         </rect>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_rating_3">
         <property name="geometry">
          <rect>
@@ -808,130 +813,36 @@
          </rect>
         </property>
         <property name="text">
-         <string>How would you rate your day so far?</string>
+         <string>What is the DSM-5?</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_emotions_3">
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>110</y>
-          <width>181</width>
-          <height>31</height>
+          <y>70</y>
+          <width>471</width>
+          <height>161</height>
          </rect>
         </property>
         <property name="text">
-         <string>What are your current emotions?</string>
+         <string>The DSM-5 is the psychological standard for diagnosing mental illnesses. It can be very helpful to even untrained individuals for thinking about the next steps with regards to their mental health. Click the button below to read it.</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
         </property>
        </widget>
-       <widget class="QLabel" name="label_log_2">
+       <widget class="QPushButton" name="btn_dsm5Link">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>220</y>
-          <width>201</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>What's happened today?</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_submit_2">
-        <property name="geometry">
-         <rect>
-          <x>284</x>
-          <y>443</y>
+          <x>280</x>
+          <y>340</y>
           <width>101</width>
           <height>41</height>
          </rect>
         </property>
         <property name="text">
-         <string>Submit</string>
-        </property>
-       </widget>
-       <widget class="QSlider" name="slider_rating_2">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>70</y>
-          <width>601</width>
-          <height>22</height>
-         </rect>
-        </property>
-        <property name="cursor">
-         <cursorShape>PointingHandCursor</cursorShape>
-        </property>
-        <property name="maximum">
-         <number>10</number>
-        </property>
-        <property name="sliderPosition">
-         <number>5</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEntry_emotion_2">
-        <property name="geometry">
-         <rect>
-          <x>110</x>
-          <y>160</y>
-          <width>171</width>
-          <height>22</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QListWidget" name="list_emotions_2">
-        <property name="geometry">
-         <rect>
-          <x>300</x>
-          <y>120</y>
-          <width>331</width>
-          <height>101</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_emotionLine_3">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>150</y>
-          <width>60</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Emotion:</string>
-        </property>
-       </widget>
-       <widget class="QSpinBox" name="spin_severity_2">
-        <property name="geometry">
-         <rect>
-          <x>110</x>
-          <y>190</y>
-          <width>42</width>
-          <height>22</height>
-         </rect>
-        </property>
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>10</number>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_emotionSeverity_3">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>180</y>
-          <width>60</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Severity:</string>
+         <string>DSM-5 Link</string>
         </property>
        </widget>
       </widget>
@@ -963,274 +874,216 @@
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="subpage_therapy">
-       <widget class="QSpinBox" name="spin_editSeverity_2">
-        <property name="geometry">
-         <rect>
-          <x>110</x>
-          <y>320</y>
-          <width>42</width>
-          <height>22</height>
-         </rect>
-        </property>
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>10</number>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_rating_4">
+      <widget class="QWidget" name="subpage_facilities">
+       <widget class="QGroupBox" name="groupBox_3">
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>120</y>
-          <width>221</width>
-          <height>31</height>
+          <y>50</y>
+          <width>621</width>
+          <height>371</height>
          </rect>
         </property>
-        <property name="text">
-         <string>How would you rate your day so far?</string>
+        <property name="title">
+         <string>Facilities and Mental Health Centers</string>
         </property>
+        <widget class="QPushButton" name="btn_center1">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>100</y>
+           <width>111</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Center1</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="btn_center2">
+         <property name="geometry">
+          <rect>
+           <x>240</x>
+           <y>100</y>
+           <width>111</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Center2</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="btn_updateLog_4">
+         <property name="geometry">
+          <rect>
+           <x>440</x>
+           <y>100</y>
+           <width>111</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Center3</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="btn_updateLog_5">
+         <property name="geometry">
+          <rect>
+           <x>440</x>
+           <y>240</y>
+           <width>111</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Center6</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="btn_updateLog_6">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>240</y>
+           <width>111</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Center4</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="btn_updateLog_7">
+         <property name="geometry">
+          <rect>
+           <x>240</x>
+           <y>240</y>
+           <width>111</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Center5</string>
+         </property>
+        </widget>
        </widget>
-       <widget class="QListWidget" name="list_editEmotions_2">
-        <property name="geometry">
-         <rect>
-          <x>300</x>
-          <y>250</y>
-          <width>331</width>
-          <height>101</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QSlider" name="slider_editRating_2">
+       <widget class="QLabel" name="label_16">
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>160</y>
-          <width>601</width>
-          <height>22</height>
-         </rect>
-        </property>
-        <property name="cursor">
-         <cursorShape>PointingHandCursor</cursorShape>
-        </property>
-        <property name="maximum">
-         <number>10</number>
-        </property>
-        <property name="sliderPosition">
-         <number>5</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_emotions_4">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>240</y>
-          <width>181</width>
-          <height>31</height>
+          <y>440</y>
+          <width>231</width>
+          <height>16</height>
          </rect>
         </property>
         <property name="text">
-         <string>What are your current emotions?</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_emotionSeverity_4">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>310</y>
-          <width>60</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Severity:</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEntry_editEmotion_2">
-        <property name="geometry">
-         <rect>
-          <x>110</x>
-          <y>290</y>
-          <width>171</width>
-          <height>22</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_emotionLine_4">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>280</y>
-          <width>60</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Emotion:</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_save_2">
-        <property name="geometry">
-         <rect>
-          <x>280</x>
-          <y>410</y>
-          <width>91</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Save</string>
+         <string>To find more near you, visit ____________.</string>
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="subpage_facilities">
-       <widget class="QTextEdit" name="entry_logUpdate_2">
+      <widget class="QWidget" name="subpage_treatment">
+       <widget class="QLabel" name="label_13">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>30</y>
+          <width>551</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Treatment is one of the most important parts of feeling better. To learn more, reference the below links:</string>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_4">
         <property name="geometry">
          <rect>
           <x>30</x>
           <y>60</y>
           <width>621</width>
-          <height>371</height>
+          <height>191</height>
          </rect>
         </property>
-       </widget>
-       <widget class="QPushButton" name="btn_updateLog_2">
-        <property name="geometry">
-         <rect>
-          <x>280</x>
-          <y>440</y>
-          <width>111</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Update Log</string>
+        <property name="title">
+         <string>Therapy/Counseling</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_logUpdate_2">
+       <widget class="QGroupBox" name="groupBox_5">
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>30</y>
-          <width>171</width>
-          <height>16</height>
+          <y>270</y>
+          <width>621</width>
+          <height>191</height>
          </rect>
         </property>
-        <property name="text">
-         <string>What's been happening?</string>
+        <property name="title">
+         <string>Medication</string>
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="subpage_medication">
-       <widget class="QListWidget" name="list_logEntries_2">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>240</y>
-          <width>631</width>
-          <height>231</height>
-         </rect>
-        </property>
-       </widget>
+      <widget class="QWidget" name="subpage_contact">
        <widget class="QLabel" name="label_11">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>210</y>
-          <width>121</width>
-          <height>16</height>
+          <x>160</x>
+          <y>90</y>
+          <width>341</width>
+          <height>131</height>
          </rect>
         </property>
         <property name="text">
-         <string>Today's Log Entries</string>
+         <string>If you are experiencing suicidal urges and feel you are a danger to yourself or others, please contact the National Suicide Hotline or emergency services immedietly</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
         </property>
        </widget>
-       <widget class="QLabel" name="label_12">
+       <widget class="QFrame" name="frame_2">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>30</y>
-          <width>121</width>
-          <height>16</height>
+          <x>159</x>
+          <y>209</y>
+          <width>341</width>
+          <height>151</height>
          </rect>
         </property>
-        <property name="text">
-         <string>You rated today a:</string>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
         </property>
-       </widget>
-       <widget class="QLabel" name="label_13">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>110</y>
-          <width>191</width>
-          <height>16</height>
-         </rect>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
         </property>
-        <property name="text">
-         <string>The emotions you had/have were:</string>
-        </property>
-       </widget>
-       <widget class="QListWidget" name="list_logEmotions_2">
-        <property name="geometry">
-         <rect>
-          <x>240</x>
-          <y>110</y>
-          <width>421</width>
-          <height>91</height>
-         </rect>
-        </property>
-        <property name="acceptDrops">
-         <bool>false</bool>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_logRating_2">
-        <property name="geometry">
-         <rect>
-          <x>240</x>
-          <y>60</y>
-          <width>31</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>#</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_14">
-        <property name="geometry">
-         <rect>
-          <x>290</x>
-          <y>60</y>
-          <width>31</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>/</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_15">
-        <property name="geometry">
-         <rect>
-          <x>340</x>
-          <y>60</y>
-          <width>31</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>10</string>
-        </property>
+        <widget class="QLabel" name="label_12">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>30</y>
+           <width>121</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Suicide Hotline: </string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_14">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>60</y>
+           <width>121</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Emergency Services:</string>
+         </property>
+        </widget>
        </widget>
       </widget>
-      <widget class="QWidget" name="subpage_todaysLog_2"/>
      </widget>
+     <zorder>substack_resources</zorder>
+     <zorder>submenu_resources</zorder>
     </widget>
     <widget class="QWidget" name="page_settings">
      <widget class="QFrame" name="submenu_settings">
@@ -1243,7 +1096,7 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(91, 91, 91)</string>
+       <string notr="true"/>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -1251,23 +1104,23 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QPushButton" name="btn_notifications">
+      <widget class="QPushButton" name="btn_general">
        <property name="enabled">
         <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>173</y>
+         <y>120</y>
          <width>121</width>
-         <height>41</height>
+         <height>51</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: white</string>
+        <string notr="true"/>
        </property>
        <property name="text">
-        <string>Notifications</string>
+        <string>General</string>
        </property>
       </widget>
       <widget class="QPushButton" name="btn_colors">
@@ -1277,13 +1130,13 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>130</y>
+         <y>180</y>
          <width>121</width>
-         <height>41</height>
+         <height>51</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: white</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Colors</string>
@@ -1302,7 +1155,7 @@
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: white</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Reset User Data</string>
@@ -1315,7 +1168,7 @@
         <x>120</x>
         <y>0</y>
         <width>681</width>
-        <height>441</height>
+        <height>521</height>
        </rect>
       </property>
       <widget class="QWidget" name="subpage_notifications">
@@ -1329,8 +1182,132 @@
          </rect>
         </property>
         <property name="title">
-         <string>Notifications</string>
+         <string>General</string>
         </property>
+        <widget class="QGroupBox" name="groupBox_6">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>40</y>
+           <width>261</width>
+           <height>161</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Notifications</string>
+         </property>
+         <widget class="QTimeEdit" name="timeEdit_end">
+          <property name="geometry">
+           <rect>
+            <x>100</x>
+            <y>110</y>
+            <width>118</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <property name="timeSpec">
+           <enum>Qt::LocalTime</enum>
+          </property>
+          <property name="time">
+           <time>
+            <hour>21</hour>
+            <minute>0</minute>
+            <second>0</second>
+           </time>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_17">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>110</y>
+            <width>61</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>End:</string>
+          </property>
+         </widget>
+         <widget class="QTimeEdit" name="timeEdit_start">
+          <property name="geometry">
+           <rect>
+            <x>100</x>
+            <y>70</y>
+            <width>118</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <property name="timeSpec">
+           <enum>Qt::LocalTime</enum>
+          </property>
+          <property name="time">
+           <time>
+            <hour>8</hour>
+            <minute>0</minute>
+            <second>0</second>
+           </time>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_15">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>70</y>
+            <width>61</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Start:</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="checkbox_notifications">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>30</y>
+            <width>131</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Notifications</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="groupBox_7">
+         <property name="geometry">
+          <rect>
+           <x>340</x>
+           <y>40</y>
+           <width>261</width>
+           <height>161</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>On-Start</string>
+         </property>
+         <widget class="QCheckBox" name="checkbox_autorun">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>30</y>
+            <width>131</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Auto-Run on boot</string>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </widget>
        </widget>
       </widget>
       <widget class="QWidget" name="subpage_colors">
@@ -1381,7 +1358,7 @@
      <zorder>btn_resetToDefaults</zorder>
     </widget>
     <widget class="QWidget" name="page_graphing">
-     <widget class="QFrame" name="submenu_myDay_2">
+     <widget class="QFrame" name="submenu_graphing">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -1391,7 +1368,7 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(91, 91, 91)</string>
+       <string notr="true"/>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -1412,7 +1389,7 @@
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: white</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Type</string>
@@ -1431,7 +1408,7 @@
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: white</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Graph</string>
@@ -1504,7 +1481,7 @@
      </widget>
     </widget>
    </widget>
-   <widget class="QFrame" name="frame">
+   <widget class="QFrame" name="frame_navigation">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -1517,7 +1494,7 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(67, 67, 67)</string>
+     <string notr="true"/>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -1535,7 +1512,7 @@
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: white</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>My Day</string>
@@ -1551,7 +1528,7 @@
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: white</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Graphing</string>
@@ -1567,7 +1544,7 @@
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: white</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Settings</string>
@@ -1583,7 +1560,7 @@
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: white</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Help</string>
@@ -1599,18 +1576,34 @@
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: white</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Resources</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>0</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>Trackr</string>
+     </property>
+    </widget>
    </widget>
-   <zorder>pages_stack</zorder>
-   <zorder>frame</zorder>
-   <zorder>label</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>0</x>
