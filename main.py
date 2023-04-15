@@ -1,9 +1,9 @@
-from components.window import App
+from components.window import Window
 from PyQt6.QtWidgets import QApplication
 
 def main():
     app = QApplication([])
-    window = App()
+    window = Window()
     app.exec()
 
 if __name__ == "__main__":

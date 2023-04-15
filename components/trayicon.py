@@ -1,0 +1,2 @@
+class TrayIcon:
+    pass
