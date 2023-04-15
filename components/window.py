@@ -9,6 +9,9 @@ class Window(QMainWindow):
         uic.loadUi("components/mainwindow.ui", self)
         self.show()
         
+        self.app = App()
+        self._tempEmotions = []
+        
         # Connect Buttons
         self._initialize_widgets()
     
@@ -25,6 +28,9 @@ class Window(QMainWindow):
         self.btn_changeRating.clicked.connect(self.click_changeRating)
         self.btn_submit.clicked.connect(self.click_submit)
         self.slider_rating.valueChanged.connect(self.slide_rating)
+        self.lineEntry_emotion.textChanged.connect(self.typed_emotion)
+        self.lineEntry_emotion.returnPressed.connect(self.enterPressed_emotion)
+        self.entry_log.textChanged.connect(self.typed_log)
         
         #-- Graphing page
         
@@ -57,6 +63,22 @@ class Window(QMainWindow):
         
     def click_submit(self):
         print("Clicked 'Submit'")
+        rating = self.slider_rating.tickInterval()
+        emotions = self._tempEmotions
+        log = self.entry_log.toPlainText()
+        self.app.set_rating(rating=rating)
+        self.app.set_emotions(emotions=emotions)
+        self.app.add_log_entry(text=log)
+        self.app.get_day().info()
         
     def slide_rating(self):
         print("Slid the 'rating' slider")
+        
+    def typed_emotion(self):
+        print("Typed in the 'emotion' text field")
+        
+    def typed_log(self):
+        print("Typed in the 'log' textbox")
+        
+    def enterPressed_emotion(self):
+        print("'Enter' hit in the 'emotions' text field")
