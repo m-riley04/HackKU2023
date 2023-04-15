@@ -70,10 +70,10 @@
        </property>
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>180</y>
-         <width>75</width>
-         <height>24</height>
+         <x>0</x>
+         <y>173</y>
+         <width>121</width>
+         <height>51</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -89,10 +89,10 @@
        </property>
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>130</y>
-         <width>75</width>
-         <height>24</height>
+         <x>0</x>
+         <y>110</y>
+         <width>121</width>
+         <height>51</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -165,10 +165,10 @@
        <widget class="QPushButton" name="btn_submit">
         <property name="geometry">
          <rect>
-          <x>300</x>
-          <y>450</y>
-          <width>75</width>
-          <height>24</height>
+          <x>284</x>
+          <y>443</y>
+          <width>101</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="text">
@@ -331,7 +331,182 @@
     </widget>
     <widget class="QWidget" name="page_help"/>
     <widget class="QWidget" name="page_resources"/>
-    <widget class="QWidget" name="page_settings"/>
+    <widget class="QWidget" name="page_settings">
+     <widget class="QFrame" name="submenu_settings">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>121</width>
+        <height>521</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91)</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="btn_notifications">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>173</y>
+         <width>121</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: white</string>
+       </property>
+       <property name="text">
+        <string>Notifications</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btn_colors">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>130</y>
+         <width>121</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: white</string>
+       </property>
+       <property name="text">
+        <string>Colors</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btn_resetUserData">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>450</y>
+         <width>121</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: white</string>
+       </property>
+       <property name="text">
+        <string>Reset User Data</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QStackedWidget" name="substack_settings">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>0</y>
+        <width>681</width>
+        <height>441</height>
+       </rect>
+      </property>
+      <widget class="QWidget" name="subpage_notifications">
+       <widget class="QGroupBox" name="groupBox">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>30</y>
+          <width>641</width>
+          <height>401</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Notifications</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="subpage_thanks_2">
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>180</y>
+          <width>131</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Thank you for sharing!</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>240</y>
+          <width>301</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Come back tomorrow to keep up with your log!</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="subpage_colors">
+       <widget class="QGroupBox" name="groupBox_2">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>30</y>
+          <width>641</width>
+          <height>401</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Colors/Design</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QPushButton" name="btn_applyChanges">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>440</y>
+        <width>121</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Apply Changes</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_resetToDefaults">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>440</y>
+        <width>121</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Reset to Defaults</string>
+      </property>
+     </widget>
+     <zorder>substack_settings</zorder>
+     <zorder>submenu_settings</zorder>
+     <zorder>btn_applyChanges</zorder>
+     <zorder>btn_resetToDefaults</zorder>
+    </widget>
     <widget class="QWidget" name="page_graphing">
      <widget class="QFrame" name="submenu_myDay_2">
       <property name="geometry">
@@ -357,10 +532,10 @@
        </property>
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>130</y>
-         <width>75</width>
-         <height>24</height>
+         <x>0</x>
+         <y>120</y>
+         <width>121</width>
+         <height>51</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -461,10 +636,10 @@
     <widget class="QPushButton" name="btn_myDay">
      <property name="geometry">
       <rect>
-       <x>180</x>
-       <y>10</y>
-       <width>75</width>
-       <height>24</height>
+       <x>174</x>
+       <y>0</y>
+       <width>91</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -477,10 +652,10 @@
     <widget class="QPushButton" name="btn_graphing">
      <property name="geometry">
       <rect>
-       <x>290</x>
-       <y>10</y>
-       <width>75</width>
-       <height>24</height>
+       <x>284</x>
+       <y>0</y>
+       <width>91</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -493,10 +668,10 @@
     <widget class="QPushButton" name="btn_settings">
      <property name="geometry">
       <rect>
-       <x>400</x>
-       <y>10</y>
-       <width>75</width>
-       <height>24</height>
+       <x>394</x>
+       <y>0</y>
+       <width>91</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -509,10 +684,10 @@
     <widget class="QPushButton" name="btn_help">
      <property name="geometry">
       <rect>
-       <x>510</x>
-       <y>10</y>
-       <width>75</width>
-       <height>24</height>
+       <x>504</x>
+       <y>0</y>
+       <width>91</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -525,10 +700,10 @@
     <widget class="QPushButton" name="btn_resources">
      <property name="geometry">
       <rect>
-       <x>620</x>
-       <y>10</y>
-       <width>75</width>
-       <height>24</height>
+       <x>614</x>
+       <y>0</y>
+       <width>91</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
