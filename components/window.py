@@ -33,10 +33,15 @@ class Window(QMainWindow):
         self.lineEntry_emotion.textChanged.connect(self.typed_emotion)
         self.lineEntry_emotion.returnPressed.connect(self.enterPressed_emotion)
         self.entry_log.textChanged.connect(self.typed_log)
+        self.spin_severity.valueChanged.connect(self.spun_severity)
         
         #-- Graphing page
         
         #-- Settings page
+        self.btn_colors.clicked.connect(self.click_colors)
+        self.btn_notifications.clicked.connect(self.click_notifications)
+        self.btn_resetUserData.clicked.connect(self.click_resetUserData)
+        self.btn_applyChanges.clicked.connect(self.click_applyChanges)
         
         #-- Help page
         
@@ -72,7 +77,7 @@ class Window(QMainWindow):
         
     def click_submit(self):
         print("Clicked 'Submit'")
-        rating = self.slider_rating.tickInterval()
+        rating = self.slider_rating.value()
         emotions = self._tempEmotions
         log = self.entry_log.toPlainText()
         self.app.set_rating(rating=rating)
@@ -85,8 +90,24 @@ class Window(QMainWindow):
         self.btn_addEntry.setEnabled(True)
         self.substack_myDay.setCurrentWidget(self.subpage_thanks)
         
+    def click_colors(self):
+        print("Clicked 'Colors'")
+        
+    def click_notifications(self):
+        print("Clicked 'Notifications'")
+        
+    def click_applyChanges(self):
+        print("Clicked 'Apply Changes'")
+        
+    def click_resetToDefault(self):
+        print("Clicked 'Resest to Defaults'")
+        
+    def click_resetUserData(self):
+        print("Clicked 'Reset User Data'")
+        
+        
     def slide_rating(self):
-        print("Slid the 'rating' slider")
+        print(f"Slid the 'rating' slider to {self.slider_rating.value()}")
         
     def typed_emotion(self):
         print("Typed in the 'emotion' text field")
@@ -97,6 +118,10 @@ class Window(QMainWindow):
     def enterPressed_emotion(self):
         print("'Enter' hit in the 'emotions' text field")
         name = self.lineEntry_emotion.text()
-        self._tempEmotions.append(self.app.create_emotion(name=name))
+        severity = self.spin_serverity.value()
+        self._tempEmotions.append(self.app.create_emotion(name=name, severity=severity))
         self.list_emotions.addItem(name)
         self.lineEntry_emotion.clear()
+        
+    def spun_severity(self):
+        print("Spun the 'severity' spinner")
