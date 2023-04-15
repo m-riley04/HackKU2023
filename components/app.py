@@ -1,6 +1,7 @@
 from .logentry import LogEntry
 from .emotion import Emotion, COMMON_EMOTIONS
 from .day import Day
+from .grapher import Grapher
 from .helpers import check_directory
 import os
 import json
@@ -9,6 +10,7 @@ class App:
     def __init__(self):
         self._days = {}
         self.day = None
+        self.grapher = None
         
         self.load()
     
@@ -81,6 +83,38 @@ class App:
         
         # If not, set a new day 
         self.set_new_day()
+        
+    def reset_data(self):
+        '''Resets the current user's data'''
+        
+        _dirPath = f"{os.getcwd()}/user_data"
+        check_directory(_dirPath)
+        with open(f"{_dirPath}/days.json", "w") as file:
+            file.write(json.dumps({"days" : {}}))
+            
+        self.load()
+        
+    def reset_settings(self):
+        '''Resets the current user's settings'''
+
+    def set_grapher(self):
+        '''Initializes the grapher object'''
+        days = list(self._days.keys())
+        yValues = []
+        for i in days:
+            yValues.append(self._days[i]["rating"])
+        self.grapher = Grapher(x=days, y=yValues)
+        
+    def set_grapher_type(self, type):
+        '''Sets the graph type for the grapher'''
+        self.grapher.set_graph_type(type=type)
+   
+    def graph_data(self):
+        '''Graphs the data on a chart'''
+        if self.grapher == None:
+            raise RuntimeError("ERROR: Grapher object is not set.")
+        
+        self.grapher.plot()
     
     def add_log_entry(self, text):
         '''Adds a log entry to the entries list'''

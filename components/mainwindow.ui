@@ -47,6 +47,9 @@
     </property>
     <widget class="QWidget" name="page_myDay">
      <widget class="QFrame" name="submenu_myDay">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -71,7 +74,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>173</y>
+         <y>240</y>
          <width>121</width>
          <height>51</height>
         </rect>
@@ -90,7 +93,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>110</y>
+         <y>180</y>
          <width>121</width>
          <height>51</height>
         </rect>
@@ -100,6 +103,25 @@
        </property>
        <property name="text">
         <string>Add Entry</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btn_todaysLog">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>120</y>
+         <width>121</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: white</string>
+       </property>
+       <property name="text">
+        <string>Today's Log</string>
        </property>
       </widget>
      </widget>
@@ -289,7 +311,7 @@
        </widget>
       </widget>
       <widget class="QWidget" name="subpage_edit"/>
-      <widget class="QWidget" name="subpage_log">
+      <widget class="QWidget" name="subpage_addEntry">
        <widget class="QTextEdit" name="entry_logUpdate">
         <property name="geometry">
          <rect>
@@ -327,6 +349,8 @@
         </property>
        </widget>
       </widget>
+      <widget class="QWidget" name="subpage_log"/>
+      <widget class="QWidget" name="subpage_todaysLog"/>
      </widget>
     </widget>
     <widget class="QWidget" name="page_help"/>
@@ -432,34 +456,6 @@
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="subpage_thanks_2">
-       <widget class="QLabel" name="label_4">
-        <property name="geometry">
-         <rect>
-          <x>250</x>
-          <y>180</y>
-          <width>131</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Thank you for sharing!</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_5">
-        <property name="geometry">
-         <rect>
-          <x>190</x>
-          <y>240</y>
-          <width>301</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Come back tomorrow to keep up with your log!</string>
-        </property>
-       </widget>
-      </widget>
       <widget class="QWidget" name="subpage_colors">
        <widget class="QGroupBox" name="groupBox_2">
         <property name="geometry">
@@ -526,9 +522,9 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QPushButton" name="btn_addEntry_2">
+      <widget class="QPushButton" name="btn_type">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -545,6 +541,25 @@
         <string>Type</string>
        </property>
       </widget>
+      <widget class="QPushButton" name="btn_graph">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>180</y>
+         <width>121</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: white</string>
+       </property>
+       <property name="text">
+        <string>Graph</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QStackedWidget" name="substack_myDay_2">
       <property name="geometry">
@@ -555,8 +570,8 @@
         <height>521</height>
        </rect>
       </property>
-      <widget class="QWidget" name="subpage_newDay_2">
-       <widget class="QLabel" name="label_rating_2">
+      <widget class="QWidget" name="subpage_graphtype">
+       <widget class="QLabel" name="label_graph_type">
         <property name="geometry">
          <rect>
           <x>220</x>
@@ -569,39 +584,39 @@
          <string>Please choose a graph type:</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="btn_graphType_line">
         <property name="geometry">
          <rect>
           <x>400</x>
           <y>240</y>
           <width>75</width>
-          <height>24</height>
+          <height>51</height>
          </rect>
         </property>
         <property name="text">
          <string>Line</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="btn_graphType_bar">
         <property name="geometry">
          <rect>
           <x>140</x>
           <y>240</y>
           <width>75</width>
-          <height>24</height>
+          <height>51</height>
          </rect>
         </property>
         <property name="text">
          <string>Bar</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="btn_graphType_scatter">
         <property name="geometry">
          <rect>
           <x>270</x>
           <y>240</y>
           <width>75</width>
-          <height>24</height>
+          <height>51</height>
          </rect>
         </property>
         <property name="text">
