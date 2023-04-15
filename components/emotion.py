@@ -11,5 +11,5 @@ class Emotion:
     
 #----------------------------------------------------------------
 COMMON_EMOTIONS = [
-    Emotion("Sadness"),
+    Emotion("Sadness")
 ]
