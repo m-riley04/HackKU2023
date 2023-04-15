@@ -1,5 +1,6 @@
 from PyQt6.QtWidgets import *
 from PyQt6 import uic
+from PyQt6.QtGui import QFontDatabase, QIcon
 from .app import App
 
 class Window(QMainWindow):
@@ -7,19 +8,30 @@ class Window(QMainWindow):
     def __init__(self):
         super(Window, self).__init__()
         uic.loadUi("components/mainwindow.ui", self)
-        self.show()
         
-        self.app = App()
-        self._tempEmotions = []
+        self.setWindowTitle("ZenLog")
+        self.setWindowIcon(QIcon("/icons/icon.ico"))
+        
+        # Import Fonts
+        QFontDatabase.addApplicationFont("/stylesheets/fonts/Abel-Regular.ttf")
+        QFontDatabase.addApplicationFont("/stylesheets/fonts/Cinzel-VariableFont_wght.ttf")
         
         # Import Stylesheet
         with open("components/stylesheets/stylesheet.qss", "r") as stylesheet:
             self.setStyleSheet(stylesheet.read())
+            
+        # Initialize App (the brain) and other temporary variables
+        self.app = App()
+        self._tempEmotions = []
         
         # Connect Buttons
         self._initialize_widgets()
+        
+        # Show Window
+        self.show()
     
     def _initialize_widgets(self):
+        '''Initializes the widgets of the app and connects them to their respective commands'''
         self.pages_stack.setCurrentWidget(self.page_myDay)
         
         #-- Top Menu Buttons
@@ -71,8 +83,6 @@ class Window(QMainWindow):
         
         #-- Resources page
         
-    
-    
     #-- Helpers
     def set_enabled_widget(self, parent, enabled):
         '''Sets the a parent widget and all of it's children to enabled or disabled'''
@@ -81,7 +91,7 @@ class Window(QMainWindow):
             child.setEnabled(enabled)
             
     def update_todaysLog(self):
-        '''Updates the Log page'''
+        '''Updates the Log page of My Day'''
         self.list_logEmotions.clear()
         self.list_logEntries.clear()
         self.substack_myDay.setCurrentWidget(self.subpage_log)

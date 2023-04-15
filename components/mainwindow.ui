@@ -1582,7 +1582,7 @@
       <string>Resources</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="app_name">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1595,7 +1595,17 @@
       <string notr="true"/>
      </property>
      <property name="text">
-      <string>Trackr</string>
+      <string>ZenLog</string>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="app_logo">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>10</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
      </property>
     </widget>
    </widget>

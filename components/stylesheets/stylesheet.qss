@@ -1,3 +1,9 @@
+* 
+{
+    font-family : Abel;
+    font-size : 15px;
+}
+
 QMainWindow, QStatusBar
 {
     color: white;
@@ -6,12 +12,33 @@ QMainWindow, QStatusBar
 
 QPushButton
 {
+    color: white;
+    background-color : #4e6ecc;
     border : 0px;
+}
+
+QPushButton:hover
+{
+    background-color : #6485e8;
+    border : 0px;
+}
+
+QPushButton:disabled
+{
+    color: #9497a1;
 }
 
 QLabel
 {
     color : white;
+    font-family : Abel;
+}
+
+QLabel#app_name
+{
+    color: white;
+    font-family : Abel;
+    font-size : 25px;
 }
 
 QLabel#label_logRating, QLabel#label_logRating_1, QLabel#label_logRating_2
