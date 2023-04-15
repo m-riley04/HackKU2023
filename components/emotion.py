@@ -7,7 +7,7 @@ class Emotion:
         return str(self.name)
     
     def __repr__(self):
-        return f"Emotion(name={self.name}, severity={self.severity})"
+        return f"Emotion(name='{self.name}', severity={self.severity})"
     
 #----------------------------------------------------------------
 COMMON_EMOTIONS = [
