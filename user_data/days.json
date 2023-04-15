@@ -1,5 +1,27 @@
 {
     "days": {
-        
+        "2023-04-15": {
+            "date": "2023-04-15",
+            "time": "10:58:17",
+            "rating": 7,
+            "emotions": [
+                {
+                    "name": "happy",
+                    "severity": 1
+                },
+                {
+                    "name": "optimistic",
+                    "severity": 1
+                }
+            ],
+            "entries": [
+                {
+                    "content": "Eh, not much. Just overall pretty decent",
+                    "time": "10:58:17"
+                }
+            ],
+            "imagePath": "",
+            "submitted": true
+        }
     }
 }
