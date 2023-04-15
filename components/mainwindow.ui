@@ -27,7 +27,7 @@
      <string notr="true">color: white</string>
     </property>
     <property name="text">
-     <string>MentalHealthTracker</string>
+     <string>Trackr</string>
     </property>
    </widget>
    <widget class="QStackedWidget" name="pages_stack">
@@ -43,7 +43,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page_myDay">
      <widget class="QFrame" name="submenu_myDay">
@@ -310,36 +310,160 @@
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="subpage_edit"/>
-      <widget class="QWidget" name="subpage_addEntry">
-       <widget class="QTextEdit" name="entry_logUpdate">
+      <widget class="QWidget" name="subpage_edit">
+       <widget class="QSpinBox" name="spin_editSeverity">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>320</y>
+          <width>42</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>10</number>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_rating_2">
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>110</y>
-          <width>621</width>
-          <height>321</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_updateLog">
-        <property name="geometry">
-         <rect>
-          <x>300</x>
-          <y>450</y>
-          <width>75</width>
-          <height>24</height>
+          <y>120</y>
+          <width>221</width>
+          <height>31</height>
          </rect>
         </property>
         <property name="text">
-         <string>Update Log</string>
+         <string>How would you rate your day so far?</string>
+        </property>
+       </widget>
+       <widget class="QListWidget" name="list_editEmotions">
+        <property name="geometry">
+         <rect>
+          <x>300</x>
+          <y>250</y>
+          <width>331</width>
+          <height>101</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QSlider" name="slider_editRating">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>160</y>
+          <width>601</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="maximum">
+         <number>10</number>
+        </property>
+        <property name="sliderPosition">
+         <number>5</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_emotions_2">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>240</y>
+          <width>181</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>What are your current emotions?</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_emotionSeverity_2">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>310</y>
+          <width>60</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Severity:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEntry_editEmotion">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>290</y>
+          <width>171</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_emotionLine_2">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>280</y>
+          <width>60</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Emotion:</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_save">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>410</y>
+          <width>91</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Save</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="subpage_addEntry">
+       <widget class="QTextEdit" name="entry_newEntry">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>60</y>
+          <width>621</width>
+          <height>371</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_publish">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>440</y>
+          <width>111</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Publish</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_logUpdate">
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>80</y>
+          <y>30</y>
           <width>171</width>
           <height>16</height>
          </rect>
@@ -349,12 +473,765 @@
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="subpage_log"/>
+      <widget class="QWidget" name="subpage_log">
+       <widget class="QListWidget" name="list_logEntries">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>240</y>
+          <width>631</width>
+          <height>231</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>210</y>
+          <width>121</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Today's Log Entries</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>30</y>
+          <width>121</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>You rated today a:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_6">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>110</y>
+          <width>191</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>The emotions you had/have were:</string>
+        </property>
+       </widget>
+       <widget class="QListWidget" name="list_logEmotions">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>110</y>
+          <width>421</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <property name="acceptDrops">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_logRating">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>60</y>
+          <width>31</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>#</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_8">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>60</y>
+          <width>31</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>/</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_9">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>60</y>
+          <width>31</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>10</string>
+        </property>
+       </widget>
+      </widget>
       <widget class="QWidget" name="subpage_todaysLog"/>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_help"/>
-    <widget class="QWidget" name="page_resources"/>
+    <widget class="QWidget" name="page_help">
+     <widget class="QFrame" name="submenu_help">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>121</width>
+        <height>521</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91)</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="btn_helpResources">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>240</y>
+         <width>121</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: white</string>
+       </property>
+       <property name="text">
+        <string>Resources</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btn_helpGraphing">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>180</y>
+         <width>121</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: white</string>
+       </property>
+       <property name="text">
+        <string>Graphing/Data</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btn_helpMyDay">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>120</y>
+         <width>121</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: white</string>
+       </property>
+       <property name="text">
+        <string>My Day</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_resources">
+     <widget class="QFrame" name="submenu_resources">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>121</width>
+        <height>521</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91)</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="btn_medication">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>240</y>
+         <width>121</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: white</string>
+       </property>
+       <property name="text">
+        <string>Medication Info</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btn_therapy">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>180</y>
+         <width>121</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: white</string>
+       </property>
+       <property name="text">
+        <string>Therapy</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btn_facilities">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>120</y>
+         <width>121</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: white</string>
+       </property>
+       <property name="text">
+        <string>Centers/Facilities</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btn_dsm5">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>300</y>
+         <width>121</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: white</string>
+       </property>
+       <property name="text">
+        <string>DSM-5</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btn_onlineHelp">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>360</y>
+         <width>121</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: white</string>
+       </property>
+       <property name="text">
+        <string>Online Help</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QStackedWidget" name="substack_resources">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>0</y>
+        <width>681</width>
+        <height>521</height>
+       </rect>
+      </property>
+      <widget class="QWidget" name="subpage_dsm5">
+       <widget class="QTextEdit" name="entry_log_2">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>260</y>
+          <width>611</width>
+          <height>171</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_rating_3">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>30</y>
+          <width>221</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>How would you rate your day so far?</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_emotions_3">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>110</y>
+          <width>181</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>What are your current emotions?</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_log_2">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>220</y>
+          <width>201</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>What's happened today?</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_submit_2">
+        <property name="geometry">
+         <rect>
+          <x>284</x>
+          <y>443</y>
+          <width>101</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Submit</string>
+        </property>
+       </widget>
+       <widget class="QSlider" name="slider_rating_2">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>70</y>
+          <width>601</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="maximum">
+         <number>10</number>
+        </property>
+        <property name="sliderPosition">
+         <number>5</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEntry_emotion_2">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>160</y>
+          <width>171</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QListWidget" name="list_emotions_2">
+        <property name="geometry">
+         <rect>
+          <x>300</x>
+          <y>120</y>
+          <width>331</width>
+          <height>101</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_emotionLine_3">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>150</y>
+          <width>60</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Emotion:</string>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="spin_severity_2">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>190</y>
+          <width>42</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>10</number>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_emotionSeverity_3">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>180</y>
+          <width>60</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Severity:</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="subpage_online">
+       <widget class="QLabel" name="label_7">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>180</y>
+          <width>131</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Thank you for sharing!</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_10">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>240</y>
+          <width>301</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Come back tomorrow to keep up with your log!</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="subpage_therapy">
+       <widget class="QSpinBox" name="spin_editSeverity_2">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>320</y>
+          <width>42</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>10</number>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_rating_4">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>120</y>
+          <width>221</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>How would you rate your day so far?</string>
+        </property>
+       </widget>
+       <widget class="QListWidget" name="list_editEmotions_2">
+        <property name="geometry">
+         <rect>
+          <x>300</x>
+          <y>250</y>
+          <width>331</width>
+          <height>101</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QSlider" name="slider_editRating_2">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>160</y>
+          <width>601</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="maximum">
+         <number>10</number>
+        </property>
+        <property name="sliderPosition">
+         <number>5</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_emotions_4">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>240</y>
+          <width>181</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>What are your current emotions?</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_emotionSeverity_4">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>310</y>
+          <width>60</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Severity:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEntry_editEmotion_2">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>290</y>
+          <width>171</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_emotionLine_4">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>280</y>
+          <width>60</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Emotion:</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_save_2">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>410</y>
+          <width>91</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Save</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="subpage_facilities">
+       <widget class="QTextEdit" name="entry_logUpdate_2">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>60</y>
+          <width>621</width>
+          <height>371</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_updateLog_2">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>440</y>
+          <width>111</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Update Log</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_logUpdate_2">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>30</y>
+          <width>171</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>What's been happening?</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="subpage_medication">
+       <widget class="QListWidget" name="list_logEntries_2">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>240</y>
+          <width>631</width>
+          <height>231</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_11">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>210</y>
+          <width>121</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Today's Log Entries</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_12">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>30</y>
+          <width>121</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>You rated today a:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_13">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>110</y>
+          <width>191</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>The emotions you had/have were:</string>
+        </property>
+       </widget>
+       <widget class="QListWidget" name="list_logEmotions_2">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>110</y>
+          <width>421</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <property name="acceptDrops">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_logRating_2">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>60</y>
+          <width>31</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>#</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_14">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>60</y>
+          <width>31</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>/</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_15">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>60</y>
+          <width>31</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>10</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="subpage_todaysLog_2"/>
+     </widget>
+    </widget>
     <widget class="QWidget" name="page_settings">
      <widget class="QFrame" name="submenu_settings">
       <property name="geometry">
@@ -561,7 +1438,7 @@
        </property>
       </widget>
      </widget>
-     <widget class="QStackedWidget" name="substack_myDay_2">
+     <widget class="QStackedWidget" name="substack_graphing">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -788,8 +1665,8 @@
   <tabstop>btn_submit</tabstop>
   <tabstop>btn_addEntry</tabstop>
   <tabstop>btn_edit</tabstop>
-  <tabstop>btn_updateLog</tabstop>
-  <tabstop>entry_logUpdate</tabstop>
+  <tabstop>btn_publish</tabstop>
+  <tabstop>entry_newEntry</tabstop>
  </tabstops>
  <resources/>
  <connections/>

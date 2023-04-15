@@ -27,8 +27,10 @@ class Window(QMainWindow):
         
         #-- My Day page
         if self.app.get_submitted() == True:
+            self.update_todaysLog()
             self.substack_myDay.setCurrentWidget(self.subpage_log)
-            self.submenu_myDay.setEnabled(True)
+            self.set_enabled_widget(self.submenu_myDay, True)
+            
         self.btn_todaysLog.clicked.connect(self.click_todaysLog)
         self.btn_addEntry.clicked.connect(self.click_addEntry)
         self.btn_edit.clicked.connect(self.click_edit)
@@ -38,6 +40,9 @@ class Window(QMainWindow):
         self.lineEntry_emotion.returnPressed.connect(self.enterPressed_emotion)
         self.entry_log.textChanged.connect(self.typed_log)
         self.spin_severity.valueChanged.connect(self.spun_severity)
+        self.list_logEntries.itemDoubleClicked.connect(self.click_logEntry)
+        self.list_logEmotions.itemDoubleClicked.connect(self.click_logEmotion)
+        self.btn_publish.clicked.connect(self.click_publish)
         
         #-- Graphing page
         self.btn_type.clicked.connect(self.clicked_type)
@@ -56,7 +61,17 @@ class Window(QMainWindow):
         #-- Help page
         
         #-- Resources page
+        
     
+    
+    #-- Enable Menus
+    def set_enabled_widget(self, parent, enabled):
+        '''Sets the a parent widget and all of it's children to enabled or disabled'''
+        parent.setEnabled(enabled)
+        for child in parent.findChildren(QPushButton):
+            child.setEnabled(enabled)
+    
+    #-- Button Commands --------------------------------
     def click_myDay(self):
         print("Clicked 'My Day'")
         self.pages_stack.setCurrentWidget(self.page_myDay)
@@ -80,9 +95,39 @@ class Window(QMainWindow):
         print("Clicked 'Resources'")
         self.pages_stack.setCurrentWidget(self.page_resources)
         
+    def click_logEntry(self):
+        print(f"Clicked 'Log Entry' for {list(self.list_logEntries.selectedItems())[0].text()}")
+        _entry = self.app.find_entry(list(self.list_logEntries.selectedItems())[0].text())
+        popup = QMessageBox(text=_entry.content)
+        popup.setWindowTitle(_entry.time)
+        popup.exec()
+        
+    def click_logEmotion(self):
+        print(f"Clicked 'Log Emotion' for {list(self.list_logEmotions.selectedItems())[0].text()}")
+        _emotion = self.app.find_emotion(list(self.list_logEmotions.selectedItems())[0].text())
+        popup = QMessageBox(text=f"Emotion: '{_emotion.name}'\nSeverity: {_emotion.severity}")
+        popup.setWindowTitle(_emotion.name)
+        popup.exec()
+        
+    def update_todaysLog(self):
+        self.list_logEmotions.clear()
+        self.list_logEntries.clear()
+        self.substack_myDay.setCurrentWidget(self.subpage_log)
+        
+        # Update the rating
+        self.label_logRating.setText(str(self.app.get_rating()))
+        
+        # Populate Emotions
+        for emotion in self.app.get_emotions():
+            self.list_logEmotions.addItem(emotion.name)
+        
+        # Populate Entries
+        for entry in self.app.get_entries():
+            self.list_logEntries.addItem(entry.time)
+        
     def click_todaysLog(self):
         print("Clicked 'Todays Log'")
-        self.substack_myDay.setCurrentWidget(self.subpage_log)
+        self.update_todaysLog()
         
     def click_addEntry(self):
         print("Clicked 'Add Entry'")
@@ -106,6 +151,18 @@ class Window(QMainWindow):
         self.submenu_myDay.setEnabled(True)
         self.substack_myDay.setCurrentWidget(self.subpage_thanks)
         
+    def click_publish(self):
+        print("Clicked 'Publish'")
+        self.app.add_log_entry(text=self.entry_newEntry.toPlainText())
+        self.update_todaysLog()
+        self.substack_myDay.setCurrentWidget(self.subpage_log)
+        
+        
+    def click_save(self):
+        print("Clicked 'Save'")
+        self.app.save()
+        self.substack_myDay.setCurrentWidget(self.subpage_log)
+        
     def click_colors(self):
         print("Clicked 'Colors'")
         self.substack_settings.setCurrentWidget(self.subpage_colors)
@@ -116,9 +173,16 @@ class Window(QMainWindow):
         
     def click_applyChanges(self):
         print("Clicked 'Apply Changes'")
+        self.app.apply_settings()
         
     def click_resetToDefaults(self):
         print("Clicked 'Resest to Defaults'")
+        
+        # Double check with user to confirm
+        reply = QMessageBox.question(self, "Are you sure you want to reset your settings to default?", "", QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+        if reply == QMessageBox.StandardButton.Yes:
+            self.app.reset_settings()
+            self.app.apply_settings()
         
     def click_resetUserData(self):
         print("Clicked 'Reset User Data'")
@@ -146,24 +210,36 @@ class Window(QMainWindow):
     def clicked_graphType_line(self):
         print("Clicked 'Graph Type - Line'")
         self.app.set_grapher()
-        self.app.set_grapher_type(type="bar")
+        self.app.set_grapher_type(type="line")
         self.btn_graph.setEnabled(True)
         
     def clicked_graphType_scatter(self):
         print("Clicked 'Graph Type - Scatter'")
         self.app.set_grapher()
-        self.app.set_grapher_type(type="bar")
+        self.app.set_grapher_type(type="scatter")
         self.btn_graph.setEnabled(True)
         
+    #-- Slider Commands --------------------------------
     def slide_rating(self):
         print(f"Slid the 'rating' slider to {self.slider_rating.value()}")
         
+    def slide_editRating(self):
+        print(f"Slid the 'edit rating' slider to {self.slider_editRating.value()}")
+        
+    #-- Typed Commands --------------------------------
     def typed_emotion(self):
         print("Typed in the 'emotion' text field")
+        
+    def typed_editEmotion(self):
+        print("Typed in the 'edit emotion' text field")
         
     def typed_log(self):
         print("Typed in the 'log' textbox")
         
+    def typed_newEntry(self):
+        print("Typed in the 'new entry' textbox")
+        
+    #-- Enter Commands --------------------------------
     def enterPressed_emotion(self):
         print("'Enter' hit in the 'emotions' text field")
         if self.lineEntry_emotion.text() == "":
@@ -179,5 +255,9 @@ class Window(QMainWindow):
         self.lineEntry_emotion.clear()
         self.spin_severity.setValue(1)
         
+    #-- Spinners Commands ------------------------------
     def spun_severity(self):
         print("Spun the 'severity' spinner")
+        
+    def spun_editServerity(self):
+        print("Spun the 'Edit Serverity' spinner")

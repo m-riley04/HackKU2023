@@ -24,6 +24,20 @@ class App:
         _temp = Day()
         return _temp.date
     
+    def find_emotion(self, name):
+        '''Searches through the list of emotions for a match in the given name. Returns the first entry that matches, or False if there is no match.'''
+        for emotion in self.get_emotions():
+            if emotion.name == name:
+                return emotion
+        return False
+    
+    def find_entry(self, time):
+        '''Searches through the list of entries for a match in the given time. Returns the first entry that matches, or False if there is no match.'''
+        for entry in self.get_entries():
+            if entry.time == time:
+                return entry
+        return False
+    
     def save(self):
         '''Saves the current day into the JSON database'''
         # Check for empty day
@@ -96,6 +110,9 @@ class App:
         
     def reset_settings(self):
         '''Resets the current user's settings'''
+
+    def apply_settings(self):
+        '''Applies the current user's selected settings'''
 
     def set_grapher(self):
         '''Initializes the grapher object'''

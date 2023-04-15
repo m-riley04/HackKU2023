@@ -10,6 +10,7 @@ class Grapher:
         self.yAxisInterval = yAxisInterval
         self.graphType = None
         self.graph = None
+        plt.ylim(0, 10)
     
     def set_graph_type(self, type):
         '''Sets the Graphers' graph type'''
@@ -23,7 +24,7 @@ class Grapher:
         if self.graphType == "bar":
             self.graph = plt.bar(x=self.x, height=self.y)
         elif self.graphType == "line":
-            self.graph = plt.plot(x=self.x, y=self.y)
+            self.graph = plt.plot(self.x, self.y)
         elif self.graphType == "scatter":
             self.graph = plt.scatter(x=self.x, y=self.y)
         else:
