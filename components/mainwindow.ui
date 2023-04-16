@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="page_myDay">
      <widget class="QFrame" name="submenu_myDay">
@@ -747,7 +747,7 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QPushButton" name="btn_medication">
+      <widget class="QPushButton" name="btn_treatment">
        <property name="enabled">
         <bool>true</bool>
        </property>
@@ -802,25 +802,6 @@
        </property>
        <property name="text">
         <string>DSM-5</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="btn_onlineHelp">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>360</y>
-         <width>121</width>
-         <height>51</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>Online Help</string>
        </property>
       </widget>
       <widget class="QPushButton" name="btn_contacts">
@@ -893,34 +874,6 @@
         </property>
         <property name="text">
          <string>DSM-5 Link</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="subpage_online">
-       <widget class="QLabel" name="label_7">
-        <property name="geometry">
-         <rect>
-          <x>250</x>
-          <y>180</y>
-          <width>131</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Thank you for sharing!</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_10">
-        <property name="geometry">
-         <rect>
-          <x>190</x>
-          <y>240</y>
-          <width>301</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Come back tomorrow to keep up with your log!</string>
         </property>
        </widget>
       </widget>
@@ -1175,7 +1128,7 @@
       </widget>
       <widget class="QPushButton" name="btn_colors">
        <property name="enabled">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -1222,7 +1175,7 @@
        </rect>
       </property>
       <widget class="QWidget" name="subpage_notifications">
-       <widget class="QGroupBox" name="groupBox">
+       <widget class="QGroupBox" name="group_general">
         <property name="geometry">
          <rect>
           <x>20</x>
@@ -1234,7 +1187,7 @@
         <property name="title">
          <string>General</string>
         </property>
-        <widget class="QGroupBox" name="groupBox_6">
+        <widget class="QGroupBox" name="group_notifications">
          <property name="geometry">
           <rect>
            <x>40</x>
@@ -1329,7 +1282,7 @@
           </property>
          </widget>
         </widget>
-        <widget class="QGroupBox" name="groupBox_7">
+        <widget class="QGroupBox" name="group_onStart">
          <property name="geometry">
           <rect>
            <x>340</x>
@@ -1357,6 +1310,28 @@
            <bool>false</bool>
           </property>
          </widget>
+        </widget>
+        <widget class="QCheckBox" name="checkbox_minimizeToTray">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>220</y>
+           <width>181</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="whatsThis">
+          <string>This is needed for the process to work in the background</string>
+         </property>
+         <property name="text">
+          <string>Minimize to tray on close</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
         </widget>
        </widget>
       </widget>
@@ -1687,12 +1662,14 @@
     <addaction name="actionExport"/>
     <addaction name="actionOpenFolder"/>
     <addaction name="separator"/>
-    <addaction name="actionReset"/>
+    <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuSettings">
     <property name="title">
      <string>Options</string>
     </property>
+    <addaction name="actionRepair"/>
+    <addaction name="actionReset"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSettings"/>
@@ -1714,11 +1691,6 @@
     <string>Ctrl+S</string>
    </property>
   </action>
-  <action name="actionReset">
-   <property name="text">
-    <string>Reset</string>
-   </property>
-  </action>
   <action name="actionOpenFolder">
    <property name="text">
     <string>Open folder</string>
@@ -1730,6 +1702,21 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionReset">
+   <property name="text">
+    <string>Reset</string>
+   </property>
+  </action>
+  <action name="actionRepair">
+   <property name="text">
+    <string>Repair</string>
    </property>
   </action>
  </widget>

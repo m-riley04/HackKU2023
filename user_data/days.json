@@ -142,6 +142,49 @@
             ],
             "imagePath": "",
             "submitted": true
+        },
+        "2023-04-16": {
+            "date": "2023-04-16",
+            "time": "00:05:42",
+            "rating": 8,
+            "emotions": [
+                {
+                    "name": "unknown",
+                    "severity": 1
+                },
+                {
+                    "name": "sluggish",
+                    "severity": 1
+                },
+                {
+                    "name": "tired",
+                    "severity": 1
+                },
+                {
+                    "name": "anxious",
+                    "severity": 1
+                },
+                {
+                    "name": "stressed",
+                    "severity": 1
+                },
+                {
+                    "name": "optimistic",
+                    "severity": 1
+                },
+                {
+                    "name": "energized",
+                    "severity": 1
+                }
+            ],
+            "entries": [
+                {
+                    "content": "Drank a red bull for the first time. It tastes like raspberries or some kind of red citrus, but its almost too tart. ",
+                    "time": "12:05:42 AM"
+                }
+            ],
+            "imagePath": "",
+            "submitted": true
         }
     }
 }

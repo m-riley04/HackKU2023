@@ -26,6 +26,8 @@ QPushButton:hover
 QPushButton:disabled
 {
     color: #9497a1;
+    background-color : gray;
+    opacity : 50;
 }
 
 QLabel
@@ -131,4 +133,11 @@ QErrorMessage .QPushButton
 QErrorMessage .QPushButton:hover
 {
     background-color : #dce2f5;
+}
+
+QPushButton:disabled
+{
+    color: #9497a1;
+    background-color : gray;
+    opacity : 50;
 }

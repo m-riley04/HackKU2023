@@ -64,6 +64,13 @@ class Window(QMainWindow):
         self.btn_colors.clicked.connect(self.click_colors)
         self.btn_general.clicked.connect(self.click_general)
         self.btn_resetUserData.clicked.connect(self.click_resetUserData)
+        self.btn_helpMyDay.clicked.connect(self.click_helpMyDay)
+        self.btn_helpGraphing.clicked.connect(self.click_helpGraphing)
+        self.btn_helpResources.clicked.connect(self.click_helpResources)
+        self.btn_contacts.clicked.connect(self.click_contacts)
+        self.btn_facilities.clicked.connect(self.click_facilities)
+        self.btn_treatment.clicked.connect(self.click_treatment)
+        self.btn_dsm5.clicked.connect(self.click_dsm5)
         
         #-- Other Buttons
         self.btn_submit.clicked.connect(self.click_submit)
@@ -74,6 +81,7 @@ class Window(QMainWindow):
         self.btn_graphType_scatter.clicked.connect(self.click_graphType_scatter)
         self.btn_resetToDefaults.clicked.connect(self.click_resetToDefaults)
         self.btn_applyChanges.clicked.connect(self.click_applyChanges)
+        self.btn_dsm5Link.clicked.connect(self.click_dsm5Link)
         
         #-- Sliders
         self.slider_rating.valueChanged.connect(self.slide_rating)
@@ -366,6 +374,30 @@ class Window(QMainWindow):
         self.app.set_grapher()
         self.app.set_grapher_type(type="scatter")
         self.btn_graph.setEnabled(True)
+        
+    def click_helpMyDay(self):
+        print("Clicked 'Help My Day'")
+    
+    def click_helpGraphing(self):
+        print("Clicked 'Help Graphing'")
+    
+    def click_helpResources(self):
+        print("Clicked 'Help Resources'")
+    
+    def click_contacts(self):
+        print("Clicked 'Contacts'")
+    
+    def click_facilities(self):
+        print("Clicked 'Facilities'")
+    
+    def click_treatment(self):
+        print("Clicked 'Treatment'")
+    
+    def click_dsm5(self):
+        print("Clicked 'DSM5'")
+    
+    def click_dsm5Link(self):
+        print("Clicked 'DSM-5 Link'")
         
     #-- Slider Commands --------------------------------
     def slide_rating(self):

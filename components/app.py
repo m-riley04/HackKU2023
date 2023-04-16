@@ -4,20 +4,53 @@ from .day import Day
 from .grapher import Grapher
 from .helpers import check_directory
 from .functiontimer import FunctionTimer
-import os
-import json
-import subprocess
-import shutil
+from plyer import notification
+from datetime import datetime, time, timedelta
+import sched, time, shutil, os, json, subprocess, random, requests
+
+def rand_datetime(start: datetime, end: datetime) -> datetime:
+    """Returns a random datetime between a start and an end"""
+    return datetime.fromtimestamp(random.randrange(round(start.timestamp()), round(end.timestamp())))
+
+def rand_time(start: time, end: time) -> time:
+    """Returns a random time between start and end."""
+
+    return rand_datetime(
+        datetime.combine(dt0 := datetime.fromtimestamp(0), start),
+        datetime.combine(
+            dt0 if start < end else dt0 + timedelta(days=1),
+            end
+        )
+    ).time()
+
+#-- Default Databases
+SETTINGS_DEFAULT = {
+    "settings" : {
+        "notifications" : {
+            "enabled" : True,
+            "start-time" : "08:00:00",
+            "end-time" : "21:00:00"
+        },
+        "auto-run" : False,
+        "minimize-to-tray" : True
+    }
+}
+
+DAYS_DEFAULT = { "days" : {} }
 
 class App:
     def __init__(self):
         self._days = {}
         self._settings = {}
+        self._nextNotification = None
         self.day = None
         self.grapher = None
-        #self.notificationTimer = FunctionTimer(interval=, function=)
+        self.updateTimer = FunctionTimer(1, self.check_time)
         
         self.load()
+        
+    def check_time(self):
+        if 
         
     def get_settings(self):
         '''Returns a dictionary of the settings for the app'''
