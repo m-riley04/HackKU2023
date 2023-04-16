@@ -1,12 +1,10 @@
 {
     "settings": 
     {
-        "notifications" : {
-            "enabled" : true
-        },
-        "general" : {
-            "minimize-to-tray" : false,
-            "auto-run" : true
-        }
+        "notifications-enabled" : true,
+        "time-start" : "08:00:00",
+        "time-end" : "21:00:00",
+        "minimize-to-tray" : true,
+        "auto-run" : false
     }
 }

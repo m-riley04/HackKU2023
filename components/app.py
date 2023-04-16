@@ -5,36 +5,15 @@ from .grapher import Grapher
 from .helpers import check_directory
 from .functiontimer import FunctionTimer
 from .notifier import Notifier
-from plyer import notification
-import datetime
-import sched, shutil, os, json, subprocess, random, requests
-
-def rand_datetime(start: datetime, end: datetime) -> datetime:
-    """Returns a random datetime between a start and an end"""
-    return datetime.fromtimestamp(random.randrange(round(start.timestamp()), round(end.timestamp())))
-
-def rand_time(start: datetime.time, end: datetime.time) -> datetime.time:
-    """Returns a random time between start and end."""
-
-    return rand_datetime(
-        datetime.combine(dt0 := datetime.fromtimestamp(0), start),
-        datetime.combine(
-            dt0 if start < end else dt0 + datetime.timedelta(days=1),
-            end
-        )
-    ).time()
+import shutil, os, json, subprocess, random, webbrowser, datetime
 
 #-- Default Databases
 SETTINGS_DEFAULT = {
-    "settings" : {
-        "notifications" : {
-            "enabled" : True,
-            "start-time" : "08:00:00",
-            "end-time" : "21:00:00"
-        },
-        "auto-run" : False,
-        "minimize-to-tray" : True
-    }
+    "notifications-enabled" : True,
+    "time-start" : "08:00:00",
+    "time-end" : "21:00:00",
+    "minimize-to-tray" : True,
+    "auto-run" : False
 }
 
 DAYS_DEFAULT = { "days" : {} }
@@ -46,7 +25,7 @@ class App:
         self._nextNotification = ""
         self.day = None
         self.grapher = None
-        self.updateTimer = FunctionTimer(60, self.check_time)
+        self.updateTimer = FunctionTimer(5, self.check_time)
         self.notificationManager = Notifier()
         
         #-- Load Schedule
@@ -58,15 +37,26 @@ class App:
         
     def check_time(self):
         '''Compares the current time and date with the next scheduled notification times'''
-        scheduled = self._nextNotification["next-datetime"]
+        scheduled = datetime.datetime.strptime(self._nextNotification["next-datetime"], "%m-%d-%YT%H:%M:%S")
         
-        if scheduled <= datetime.datetime.now().strftime("%m-%d-%y_%H:%M:%S"):
-            self.notificationManager.notify(title="It's time to log! Don't be late!", message="Open ZenLog from the taskbar and let's get healthier together!")
+        if scheduled <= datetime.datetime.now():
+            if self._settings["notifications-enabled"] == True:
+                self.notificationManager.notify(title="It's time to log! Don't be late!", message="Open ZenLog from the taskbar and let's get healthier together!")
             self.schedule_next()
+            
+    def visit_website(self, url:str="https://google.com"):
+        '''Opens a website from a given URL in the browser'''
+        webbrowser.open_new_tab(url)
         
-    def schedule_next(self):
+    def schedule_next(self, hourStart, hourEnd):
         '''Randomly schedules the next notification datetime'''
-        random.range()
+        #TODO
+        d = hourEnd - hourStart
+        random.randrange(hourStart, hourEnd)
+
+    def dev_notification(self):
+        if self._settings["notifications-enabled"] == True:
+            self.notificationManager.notify(title="Notification Title", message="This is the notification message.")
     
     def get_settings(self):
         '''Returns a dictionary of the settings for the app'''
@@ -89,12 +79,25 @@ class App:
                 return emotion
         return False
     
-    def find_entry(self, time):
+    def find_entry(self, time, all=False):
         '''Searches through the list of entries for a match in the given time. Returns the first entry that matches, or False if there is no match.'''
-        for entry in self.get_entries():
-            if entry.time == time:
-                return entry
+        if not all:
+            for entry in self.get_entries():
+                if entry.time == time:
+                    return entry
+        else:
+                for entry in self.get_all_entries():
+                    if entry.time == time:
+                        return entry
         return False
+    
+    def get_all_entries(self) -> list[LogEntry]:
+        '''Returns a list of all entries'''
+        _temp = []
+        for day in self._days.keys():
+            for entry in self._days[day]["entries"]:
+                _temp.append(LogEntry(content=entry["content"], date=entry["date"], time=entry["time"]))
+        return _temp
     
     def open_path(self, path):
         subprocess.Popen(fr'explorer /open, "{path}"')
@@ -137,7 +140,6 @@ class App:
             self._settings = json.loads(file.read())["settings"]
         
         #-- Load day
-        check_directory(_dirPath)
         with open(f"{_dirPath}/days.json", "r") as file:
             self._days = json.loads(file.read())["days"]
         
@@ -153,7 +155,7 @@ class App:
                 # Load day entries
                 entries = []
                 for i in self._days[day]["entries"]:
-                    entries.append(LogEntry(i["content"], i["time"]))
+                    entries.append(LogEntry(i["content"], i["time"], i["date"]))
                 
                 # Load day
                 self.day = Day(date=day, time=self._days[day]["time"], rating=self._days[day]["rating"], emotions=list(emotions), entries=list(entries), imagePath=self._days[day]["imagePath"], submitted=bool(self._days[day]["submitted"]))
@@ -184,6 +186,12 @@ class App:
         
     def reset_settings(self):
         '''Resets the current user's settings'''
+        check_directory(f"{os.getcwd()}/user_data")
+        with open(f"{os.getcwd()}/user_data/settings.json", "w") as file:
+            file.write(json.dumps({"settings" : SETTINGS_DEFAULT}, indent=4))
+
+    def repair(self):
+        '''Repairs broken data files and directories'''
 
     def load_data(self, path):
         '''Replaces the current user's data with the given path'''
@@ -194,11 +202,19 @@ class App:
         except:
             raise RuntimeError("Unknown error while exporting.")
 
-    def apply_settings(self):
+    def apply_settings(self, notifications, timeStart, timeEnd, minimize, autoRun):
         '''Applies the current user's selected settings'''
+        self._settings["notifications-enabled"] = notifications
+        self._settings["time-start"] = timeStart
+        self._settings["time-end"] = timeEnd
+        self._settings["minimize-to-tray"] = minimize
+        self._settings["auto-run"] = autoRun
+        
         check_directory(f"{os.getcwd()}/user_data")
         with open(f"{os.getcwd()}/user_data/settings.json", "w") as file:
-            file.write(json.dumps({"settings" : self._settings}))
+            file.write(json.dumps({"settings" : self._settings}, indent=4))
+        
+        self.save()
 
     def set_grapher(self):
         '''Initializes the grapher object'''

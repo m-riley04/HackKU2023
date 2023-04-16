@@ -139,3 +139,19 @@ QGroupBox
 {
     color : white;
 }
+
+QGroupBox#group_graphType .QPushButton:focus
+{
+    background-color : #95a2c9;
+}
+
+QGroupBox#group_general *, QGroupBox#group_notifications *
+{
+    color : white;
+}
+
+.QTimeEdit
+{
+    color : white;
+    background-color : #202430;
+}
