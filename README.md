@@ -1,4 +1,4 @@
-# HachKU2023 - ZenLog
+# HackKU2023 - ZenLog
 
 ## Inspiration
 I took inspiration from those paper print-out bubble sheets of the year where you mark down your emotion for the day every day, and then at the end of the year you can see patterns and trends. I thought that I could take that concept and transform it into something a little more useful and sharable.
