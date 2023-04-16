@@ -4,21 +4,22 @@ from .day import Day
 from .grapher import Grapher
 from .helpers import check_directory
 from .functiontimer import FunctionTimer
+from .notifier import Notifier
 from plyer import notification
-from datetime import datetime, time, timedelta
-import sched, time, shutil, os, json, subprocess, random, requests
+import datetime
+import sched, shutil, os, json, subprocess, random, requests
 
 def rand_datetime(start: datetime, end: datetime) -> datetime:
     """Returns a random datetime between a start and an end"""
     return datetime.fromtimestamp(random.randrange(round(start.timestamp()), round(end.timestamp())))
 
-def rand_time(start: time, end: time) -> time:
+def rand_time(start: datetime.time, end: datetime.time) -> datetime.time:
     """Returns a random time between start and end."""
 
     return rand_datetime(
         datetime.combine(dt0 := datetime.fromtimestamp(0), start),
         datetime.combine(
-            dt0 if start < end else dt0 + timedelta(days=1),
+            dt0 if start < end else dt0 + datetime.timedelta(days=1),
             end
         )
     ).time()
@@ -42,16 +43,31 @@ class App:
     def __init__(self):
         self._days = {}
         self._settings = {}
-        self._nextNotification = None
+        self._nextNotification = ""
         self.day = None
         self.grapher = None
-        self.updateTimer = FunctionTimer(1, self.check_time)
+        self.updateTimer = FunctionTimer(60, self.check_time)
+        self.notificationManager = Notifier()
         
+        #-- Load Schedule
+        with open(f"{os.getcwd()}/user_data/schedule.json", "r") as file:
+            self._nextNotification = json.loads(file.read())
+        
+        #-- Load Rest
         self.load()
         
     def check_time(self):
-        if 
+        '''Compares the current time and date with the next scheduled notification times'''
+        scheduled = self._nextNotification["next-datetime"]
         
+        if scheduled <= datetime.datetime.now().strftime("%m-%d-%y_%H:%M:%S"):
+            self.notificationManager.notify(title="It's time to log! Don't be late!", message="Open ZenLog from the taskbar and let's get healthier together!")
+            self.schedule_next()
+        
+    def schedule_next(self):
+        '''Randomly schedules the next notification datetime'''
+        random.range()
+    
     def get_settings(self):
         '''Returns a dictionary of the settings for the app'''
         return self._settings

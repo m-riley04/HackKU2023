@@ -23,13 +23,6 @@ QPushButton:hover
     border : 0px;
 }
 
-QPushButton:disabled
-{
-    color: #9497a1;
-    background-color : gray;
-    opacity : 50;
-}
-
 QLabel
 {
     color : white;
@@ -140,4 +133,9 @@ QPushButton:disabled
     color: #9497a1;
     background-color : gray;
     opacity : 50;
+}
+
+QGroupBox
+{
+    color : white;
 }

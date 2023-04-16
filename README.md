@@ -1,5 +1,3 @@
-# HackKU2023 - ZenLog
-
 ## Inspiration
 I took inspiration from those paper print-out bubble sheets of the year where you mark down your emotion for the day every day, and then at the end of the year you can see patterns and trends. I thought that I could take that concept and transform it into something a little more useful and sharable.
 
@@ -17,14 +15,17 @@ Features:
 - Saving, exporting, and loading of data files
 - "Help" page to walk users through step-by-step each area
 - "Resources" page to help users explore their mental health further and/or get them in contact with mental health facilities
+- Sleek and lightweight
+- Cool logo ig
 - Lots of docstrings and comments
 - Very upgradable
 
 ## How we built it
-The back-end was coded entirely in Python. The front-end used PyQt for the GUI framework. I was able to use Qt to create the UIs very easily and quickly, and they exported into very neat XML and CSS-ish files.
+The back-end was coded entirely in Python. The front-end used PyQt for the GUI framework. I was able to use Qt to create the UIs very easily and quickly, and they exported into very neat XML and CSS-ish files. The graphing portion was done with extreme thanks to MatPlotLib. Seriously, life saver.
 
 ## Challenges we ran into
 Stylesheets. Stylesheets. Stylesheets. The Qt designer doesn't allow importing of Qt stylesheet files (cmon, really??), and only has a tiny stylesheet parameter line for each individual widget. That isn't scalable at all, so we had to remove all of the applied styles and implement the styles within the program's runtime.
+Another thing was the timed notification. We ended up using the "threads" module to create a repeating timer that runs alongside the executive (which is something that I've similarly had to use in another completely separate project)
 
 ## Accomplishments that we're proud of
 The UI quality and object oriented expansiveness. I made sure that this is not a one-and-done project, and instead can be expanded upon with great ease (I added LOTS of docstrings and comments). 
