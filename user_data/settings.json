@@ -1,7 +1,12 @@
 {
     "settings": 
     {
-        "notifications" : {},
-        "general" : {}
+        "notifications" : {
+            "enabled" : true
+        },
+        "general" : {
+            "minimize-to-tray" : false,
+            "auto-run" : true
+        }
     }
 }

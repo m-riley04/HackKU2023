@@ -1,7 +1,9 @@
 from PyQt6.QtWidgets import *
+from PyQt6.QtCore import QBitArray
 from PyQt6 import uic
 from PyQt6.QtGui import QFontDatabase, QIcon, QPixmap, QAction
 from .app import App
+import os
 
 class Window(QMainWindow):
     '''GUI of my application'''
@@ -32,9 +34,10 @@ class Window(QMainWindow):
         self.app = App()
         self._tempEmotions = []
         
-        # Connect Buttons
+        # Initialize Objects/Widgets
         self._initialize_widgets()
         self._initialize_tray_icon()
+        self._initialize_toolbar()
         
         # Show Window
         self.show()
@@ -43,54 +46,61 @@ class Window(QMainWindow):
         '''Initializes the widgets of the app and connects them to their respective commands'''
         self.pages_stack.setCurrentWidget(self.page_myDay)
         
-        #-- Top Menu Buttons
+        #-- Navigation Buttons
         self.btn_myDay.clicked.connect(self.click_myDay)
         self.btn_graphing.clicked.connect(self.click_graphing)
         self.btn_settings.clicked.connect(self.click_settings)
         self.btn_help.clicked.connect(self.click_help)
         self.btn_resources.clicked.connect(self.click_resources)
         
+        #-- Submenu Buttons
+        self.btn_todaysLog.clicked.connect(self.click_todaysLog)
+        self.btn_addEntry.clicked.connect(self.click_addEntry)
+        self.btn_edit.clicked.connect(self.click_edit)
+        self.btn_allLogs.clicked.connect(self.click_allLogs)
+        self.btn_allPictures.clicked.connect(self.click_allPictures)
+        self.btn_type.clicked.connect(self.click_type)
+        self.btn_graph.clicked.connect(self.click_graph)
+        self.btn_colors.clicked.connect(self.click_colors)
+        self.btn_general.clicked.connect(self.click_general)
+        self.btn_resetUserData.clicked.connect(self.click_resetUserData)
+        
+        #-- Other Buttons
+        self.btn_submit.clicked.connect(self.click_submit)
+        self.btn_save.clicked.connect(self.click_save)
+        self.btn_publish.clicked.connect(self.click_publish)
+        self.btn_graphType_bar.clicked.connect(self.click_graphType_bar)
+        self.btn_graphType_line.clicked.connect(self.click_graphType_line)
+        self.btn_graphType_scatter.clicked.connect(self.click_graphType_scatter)
+        self.btn_resetToDefaults.clicked.connect(self.click_resetToDefaults)
+        self.btn_applyChanges.clicked.connect(self.click_applyChanges)
+        
+        #-- Sliders
+        self.slider_rating.valueChanged.connect(self.slide_rating)
+        self.slider_editRating.valueChanged.connect(self.slide_editRating)
+        
+        #-- Incremnet Spinners
+        self.spin_severity.valueChanged.connect(self.spun_severity)
+        self.spin_editSeverity.valueChanged.connect(self.spun_editSeverity)
+        
+        #-- Item Lists
+        self.list_logEntries.itemDoubleClicked.connect(self.click_logEntry)
+        self.list_logEmotions.itemDoubleClicked.connect(self.click_logEmotion)
+        
+        #-- Line Entry
+        self.lineEntry_emotion.textChanged.connect(self.typed_emotion)
+        self.lineEntry_emotion.returnPressed.connect(self.enterPressed_emotion)
+        self.lineEntry_editEmotion.textChanged.connect(self.typed_editEmotion)
+        self.lineEntry_editEmotion.returnPressed.connect(self.enterPressed_editEmotion)
+        
+        #-- Text Entry
+        self.entry_log.textChanged.connect(self.typed_log)
+        
         #-- My Day page
         if self.app.get_submitted() == True:
             self.update_todaysLog()
             self.substack_myDay.setCurrentWidget(self.subpage_log)
             self.set_enabled_widget(self.submenu_myDay, True)
-            
-        self.btn_todaysLog.clicked.connect(self.click_todaysLog)
-        self.btn_addEntry.clicked.connect(self.click_addEntry)
-        self.btn_edit.clicked.connect(self.click_edit)
-        self.btn_submit.clicked.connect(self.click_submit)
-        self.btn_save.clicked.connect(self.click_save)
-        self.slider_rating.valueChanged.connect(self.slide_rating)
-        self.slider_editRating.valueChanged.connect(self.slide_editRating)
-        self.lineEntry_emotion.textChanged.connect(self.typed_emotion)
-        self.lineEntry_emotion.returnPressed.connect(self.enterPressed_emotion)
-        self.entry_log.textChanged.connect(self.typed_log)
-        self.spin_severity.valueChanged.connect(self.spun_severity)
-        self.spin_editSeverity.valueChanged.connect(self.spun_editSeverity)
-        self.list_logEntries.itemDoubleClicked.connect(self.click_logEntry)
-        self.list_logEmotions.itemDoubleClicked.connect(self.click_logEmotion)
-        self.btn_publish.clicked.connect(self.click_publish)
-        self.lineEntry_editEmotion.textChanged.connect(self.typed_editEmotion)
-        self.lineEntry_editEmotion.returnPressed.connect(self.enterPressed_editEmotion)
-        
-        #-- Graphing page
-        self.btn_type.clicked.connect(self.clicked_type)
-        self.btn_graph.clicked.connect(self.clicked_graph)
-        self.btn_graphType_bar.clicked.connect(self.clicked_graphType_bar)
-        self.btn_graphType_line.clicked.connect(self.clicked_graphType_line)
-        self.btn_graphType_scatter.clicked.connect(self.clicked_graphType_scatter)
-        
-        #-- Settings page
-        self.btn_colors.clicked.connect(self.click_colors)
-        self.btn_general.clicked.connect(self.click_general)
-        self.btn_resetUserData.clicked.connect(self.click_resetUserData)
-        self.btn_resetToDefaults.clicked.connect(self.click_resetToDefaults)
-        self.btn_applyChanges.clicked.connect(self.click_applyChanges)
-        
-        #-- Help page
-        
-        #-- Resources page
         
     def _initialize_tray_icon(self):
         '''Initializes the tray icon and it's commands'''
@@ -112,14 +122,23 @@ class Window(QMainWindow):
         self.trayIcon.setContextMenu(tray_menu)
         self.trayIcon.show()
         
+    def _initialize_toolbar(self):
+        '''Initializes the toolbar and all it's commands'''
+        self.actionSave.triggered.connect(self.action_save)
+        self.actionLoad.triggered.connect(self.action_load)
+        self.actionExport.triggered.connect(self.action_export)
+        self.actionOpenFolder.triggered.connect(self.action_openFolder)
+        self.actionReset.triggered.connect(self.action_reset)
+        
     #-- Event Overrides
     def closeEvent(self, event):
-        event.ignore()
-        self.hide()
-        self.trayIcon.showMessage(
-            "ZenLog",
-            "ZenLog was minimized to the tray."
-        )
+        if self.app.get_settings()["general"]["minimize-to-tray"] != False:
+            event.ignore()
+            self.hide()
+            self.trayIcon.showMessage(
+                "ZenLog",
+                "ZenLog was minimized to the tray."
+            )
         
     #-- Helpers
     def set_enabled_widget(self, parent, enabled):
@@ -138,14 +157,64 @@ class Window(QMainWindow):
         self.label_logRating.setText(str(self.app.get_rating()))
         
         # Populate Emotions
-        print(self.app.get_emotions())
         for emotion in self.app.get_emotions():
             self.list_logEmotions.addItem(emotion.name)
         
         # Populate Entries
-        print(self.app.get_entries())
         for entry in self.app.get_entries():
             self.list_logEntries.addItem(entry.time)
+    
+    #-- Toolbar Commands --------------------------------
+    def action_save(self):
+        '''Saves the current day'''
+        self.app.save()
+    
+    def action_load(self):
+        '''Loads a JSON file into the database and overwrites the current JSON'''
+        reply = QMessageBox.question(self, "Load Data", "Are you sure you want to load? This will overwrite any current data.", QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+        if reply == QMessageBox.StandardButton.Yes:
+            dataPath = QFileDialog.getOpenFileName(self, "Open", "", "JSON (*.json)")[0]
+            if dataPath == "":
+                message = QErrorMessage(self)
+                message.showMessage("ERROR: Data load operation cancelled.")
+                message.exec()
+                return
+            self.app.load_data(dataPath)
+            self.app.load()
+            if not self.app.get_submitted():
+                self.substack_myDay.setCurrentWidget(self.subpage_newDay)
+                self.submenu_myDay.setEnabled(False)
+            else:
+                self.substack_myDay.setCurrentWidget(self.subpage_log)
+                self.set_enabled_widget(self.submenu_myDay, True)
+    
+    def action_export(self):
+        '''Exports the current JSON file into a directory of the user's choice'''
+        path = QFileDialog.getSaveFileName(self, "Export", "", "JSON (*.json)")[0]
+        if path != "":
+            try:
+                return self.app.export(path)
+            except FileExistsError:
+                message = QErrorMessage(self)
+                message.showMessage("ERROR: A file of the same name already exists there. Please choose another directory.")
+                message.exec()
+            except:
+                message = QErrorMessage(self)
+                message.showMessage("ERROR: An unknown error occurred while exporting. Please try again.")
+                message.exec()
+    
+    def action_openFolder(self):
+        '''Opens the root folder of the application'''
+        pass
+    
+    def action_reset(self):
+        '''Prompts the user if they want to reset all their user data. Resets it if they select "Yes"'''
+        reply = QMessageBox.question(self, "Reset User Data", "Are you sure you want to reset your user data? This will delete ALL recorded days and media.", QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+        if reply == QMessageBox.StandardButton.Yes:
+            self.app.reset_data()
+            self.app.load()
+            self.substack_myDay.setCurrentWidget(self.subpage_newDay)
+            self.submenu_myDay.setEnabled(False)
     
     #-- Button Commands --------------------------------
     def click_myDay(self):
@@ -184,6 +253,13 @@ class Window(QMainWindow):
         popup = QMessageBox(text=f"Emotion: '{_emotion.name}'\nSeverity: {_emotion.severity}")
         popup.setWindowTitle(_emotion.name)
         popup.exec()
+        
+    def click_allLogs(self):
+        print("Clicked 'All Logs'")
+        
+    def click_allPictures(self):
+        print("Clicked 'All Pictures'")
+        self.app.open_path(rf'{os.getcwd()}\media')
         
     def click_todaysLog(self):
         print("Clicked 'Todays Log'")
@@ -266,26 +342,26 @@ class Window(QMainWindow):
             self.substack_myDay.setCurrentWidget(self.subpage_newDay)
             self.submenu_myDay.setEnabled(False)
         
-    def clicked_type(self):
+    def click_type(self):
         print("Clicked 'Type'")
         
-    def clicked_graph(self):
+    def click_graph(self):
         print("Clicked 'Graph'")
         self.app.graph_data()
         
-    def clicked_graphType_bar(self):
+    def click_graphType_bar(self):
         print("Clicked 'Graph Type - Bar'")
         self.app.set_grapher()
         self.app.set_grapher_type(type="bar")
         self.btn_graph.setEnabled(True)
         
-    def clicked_graphType_line(self):
+    def click_graphType_line(self):
         print("Clicked 'Graph Type - Line'")
         self.app.set_grapher()
         self.app.set_grapher_type(type="line")
         self.btn_graph.setEnabled(True)
         
-    def clicked_graphType_scatter(self):
+    def click_graphType_scatter(self):
         print("Clicked 'Graph Type - Scatter'")
         self.app.set_grapher()
         self.app.set_grapher_type(type="scatter")

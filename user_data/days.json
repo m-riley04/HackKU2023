@@ -95,7 +95,7 @@
         "2023-04-15": {
             "date": "2023-04-15",
             "time": "10:58:17",
-            "rating": 9,
+            "rating": 8,
             "emotions": [
                 {
                     "name": "meh",
@@ -115,6 +115,10 @@
                 },
                 {
                     "name": "hyped",
+                    "severity": 1
+                },
+                {
+                    "name": "tired",
                     "severity": 1
                 }
             ],

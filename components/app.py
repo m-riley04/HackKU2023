@@ -6,15 +6,22 @@ from .helpers import check_directory
 from .functiontimer import FunctionTimer
 import os
 import json
+import subprocess
+import shutil
 
 class App:
     def __init__(self):
         self._days = {}
+        self._settings = {}
         self.day = None
         self.grapher = None
         #self.notificationTimer = FunctionTimer(interval=, function=)
         
         self.load()
+        
+    def get_settings(self):
+        '''Returns a dictionary of the settings for the app'''
+        return self._settings
     
     def set_new_day(self):
         '''Sets the new current day'''
@@ -39,6 +46,9 @@ class App:
             if entry.time == time:
                 return entry
         return False
+    
+    def open_path(self, path):
+        subprocess.Popen(fr'explorer /open, "{path}"')
     
     def save(self):
         '''Saves the current day into the JSON database'''
@@ -65,15 +75,19 @@ class App:
         
         # Save to file
         _dirPath = f"{os.getcwd()}/user_data"
-        print(_dirPath)
         check_directory(_dirPath)
         with open(f"{_dirPath}/days.json", "w") as file:
             file.write(jsonData)
         
     def load(self):
-        '''Loads the current day from the database. Returns the day if it finds one, otherwise it create a new one.'''
-        # Open JSON data file
+        '''Loads the current day and settings from the database. Returns the day if it finds one, otherwise it create a new one.'''
+        #-- Load Settings
         _dirPath = f"{os.getcwd()}/user_data"
+        check_directory(_dirPath)
+        with open(f"{_dirPath}/settings.json", "r") as file:
+            self._settings = json.loads(file.read())["settings"]
+        
+        #-- Load day
         check_directory(_dirPath)
         with open(f"{_dirPath}/days.json", "r") as file:
             self._days = json.loads(file.read())["days"]
@@ -100,6 +114,15 @@ class App:
         # If not, set a new day 
         self.set_new_day()
         
+    def export(self, path):
+        '''Exports all the user's information to a directory of their choice.'''
+        try:
+            shutil.copy(src=f"{os.getcwd()}/user_data/days.json", dst=path)
+        except shutil.SameFileError:
+            raise FileExistsError("Duplicate file exists.")
+        except:
+            raise RuntimeError("Unknown error while exporting.")
+        
     def reset_data(self):
         '''Resets the current user's data'''
         
@@ -113,8 +136,20 @@ class App:
     def reset_settings(self):
         '''Resets the current user's settings'''
 
+    def load_data(self, path):
+        '''Replaces the current user's data with the given path'''
+        try:
+            shutil.copy(dst=f"{os.getcwd()}/user_data/days.json", src=path)
+        except shutil.SameFileError:
+            raise FileExistsError("Duplicate file exists.")
+        except:
+            raise RuntimeError("Unknown error while exporting.")
+
     def apply_settings(self):
         '''Applies the current user's selected settings'''
+        check_directory(f"{os.getcwd()}/user_data")
+        with open(f"{os.getcwd()}/user_data/settings.json", "w") as file:
+            file.write(json.dumps({"settings" : self._settings}))
 
     def set_grapher(self):
         '''Initializes the grapher object'''
