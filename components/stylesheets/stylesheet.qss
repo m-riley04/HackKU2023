@@ -44,6 +44,12 @@ QLabel#app_name
 QLabel#label_logRating, QLabel#label_logRating_1, QLabel#label_logRating_2
 {
     font-weight : bold;
+    font-size : 35px;
+}
+
+QLabel#app_logo_pix
+{
+    background-color : #202430;
 }
 
 QFrame#frame_navigation, QMenuBar

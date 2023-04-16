@@ -1,6 +1,6 @@
 from PyQt6.QtWidgets import *
 from PyQt6 import uic
-from PyQt6.QtGui import QFontDatabase, QIcon
+from PyQt6.QtGui import QFontDatabase, QIcon, QPixmap, QAction
 from .app import App
 
 class Window(QMainWindow):
@@ -9,16 +9,24 @@ class Window(QMainWindow):
         super(Window, self).__init__()
         uic.loadUi("components/mainwindow.ui", self)
         
+        # Window Attributes
+        self.appIcon = QIcon('components/icons/icon.ico')
         self.setWindowTitle("ZenLog")
-        self.setWindowIcon(QIcon("/icons/icon.ico"))
+        self.setWindowIcon(self.appIcon)
+        self.setFixedSize(800, 588)
         
         # Import Fonts
-        QFontDatabase.addApplicationFont("/stylesheets/fonts/Abel-Regular.ttf")
-        QFontDatabase.addApplicationFont("/stylesheets/fonts/Cinzel-VariableFont_wght.ttf")
+        QFontDatabase.addApplicationFont("components/stylesheets/fonts/Abel-Regular.ttf")
+        QFontDatabase.addApplicationFont("components/stylesheets/fonts/Cinzel-VariableFont_wght.ttf")
         
         # Import Stylesheet
         with open("components/stylesheets/stylesheet.qss", "r") as stylesheet:
             self.setStyleSheet(stylesheet.read())
+            
+        # Import Images
+        iconPixmap = QPixmap("components/icons/icon.png")
+        self.app_logo_pix.setScaledContents(True)
+        self.app_logo_pix.setPixmap(iconPixmap)
             
         # Initialize App (the brain) and other temporary variables
         self.app = App()
@@ -26,6 +34,7 @@ class Window(QMainWindow):
         
         # Connect Buttons
         self._initialize_widgets()
+        self._initialize_tray_icon()
         
         # Show Window
         self.show()
@@ -82,6 +91,35 @@ class Window(QMainWindow):
         #-- Help page
         
         #-- Resources page
+        
+    def _initialize_tray_icon(self):
+        '''Initializes the tray icon and it's commands'''
+        self.trayIcon = QSystemTrayIcon(self)
+        self.trayIcon.setIcon(self.appIcon)
+        
+        show_action = QAction("Show", self)
+        hide_action = QAction("Hide", self)
+        exit_action = QAction("Exit", self)
+        show_action.triggered.connect(self.show)
+        hide_action.triggered.connect(self.hide)
+        exit_action.triggered.connect(QApplication.quit)
+        
+        #-- Menu
+        tray_menu = QMenu()
+        tray_menu.addAction(show_action)
+        tray_menu.addAction(hide_action)
+        tray_menu.addAction(exit_action)
+        self.trayIcon.setContextMenu(tray_menu)
+        self.trayIcon.show()
+        
+    #-- Event Overrides
+    def closeEvent(self, event):
+        event.ignore()
+        self.hide()
+        self.trayIcon.showMessage(
+            "ZenLog",
+            "ZenLog was minimized to the tray."
+        )
         
     #-- Helpers
     def set_enabled_widget(self, parent, enabled):

@@ -1,6 +1,6 @@
 from threading import Timer
 class FunctionTimer():
-    '''Repeats a function based on a passed time interval'''
+    '''Repeats a function based on a passed time interval (in seconds)'''
     def __init__(self, interval, function, *args, **kwargs):
         self._timer     = None
         self.interval   = interval

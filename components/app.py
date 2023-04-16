@@ -3,6 +3,7 @@ from .emotion import Emotion, COMMON_EMOTIONS
 from .day import Day
 from .grapher import Grapher
 from .helpers import check_directory
+from .functiontimer import FunctionTimer
 import os
 import json
 
@@ -11,6 +12,7 @@ class App:
         self._days = {}
         self.day = None
         self.grapher = None
+        #self.notificationTimer = FunctionTimer(interval=, function=)
         
         self.load()
     
